@@ -113,7 +113,7 @@ function Nav() {
 				<ul class="nav-menu nav-menu-social align-to-right">
 					<li>
 						<a style={{cursor:"pointer"}}  onClick={handleClickOpen} class="ft-medium">
-							<i class="lni lni-user me-2"></i>Sign In
+							<i class="lni lni-user me-2"></i>Yuvan
 						</a>
 					</li>
 					<li class="add-listing">
