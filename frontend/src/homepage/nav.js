@@ -92,7 +92,7 @@ function Nav() {
 	 <div class="container"> 
 		<nav id="navigation" class="navigation navigation-landscape">
 			<div class="nav-menus-wrapper">
-				<ul class="nav-menu">
+				{/* <ul class="nav-menu">
 				
 					<li><a href="#">Home</a></li>
 					
@@ -108,12 +108,26 @@ function Nav() {
 						
 					</li>
 					
-				</ul>
-				
-				<ul class="nav-menu nav-menu-social align-to-right">
+				</ul> */}
+				<div className="mobile-nav" onClick={toggleMobileMenu}>
+          <i className="fas fa-bars" style={{color:"black"}}></i>
+        </div>
+        <div className={`site-nav-menu ${mobileMenuActive ? 'mobile-menu' : ''} flex-center-full-hw`}>
+          <ul className="primary-menu" style={{paddingLeft:100}}>
+            <li><a href="#" className="active">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Works</a></li>
+			<li>
+			<Link to="/CandResume">Candidates Resumes</Link>
+			</li>
+			
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+			
+			<ul class="nav-menu nav-menu-social align-to-right" style={{paddingLeft:70}}>
 					<li>
 						<a style={{cursor:"pointer"}}  onClick={handleClickOpen} class="ft-medium">
-							<i class="lni lni-user me-2"></i>Yuvan
+							<i class="lni lni-user me-2"></i>Sign In
 						</a>
 					</li>
 					<li class="add-listing">
@@ -121,7 +135,13 @@ function Nav() {
 						<Link to="/Jobpost" class="theme-bg" ><i class="lni lni-circle-plus me-1"></i> Post a Job</Link>
 					</li>
 				</ul>
+			
+          </ul>
+		  
+        </div>
+				
 			</div>
+			
 		</nav> 
 	 </div> 
 	 </div> 
