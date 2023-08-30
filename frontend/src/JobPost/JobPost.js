@@ -2,7 +2,26 @@ import React from 'react';
 import {motion} from "framer-motion"
 import {Link} from "react-router-dom"
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function JobPost() {
+    // const notify = () => 
+    // {
+    //     try{
+    //         toast.success("Job Has been Submitted Successfully!",
+    //         {
+    //             position: toast.POSITION.TOP_CENTER
+    //         })
+    //     }
+    //     catch(err){
+    //         toast.error("Something Went Wrong",
+    //         {
+    //             position: toast.POSITION.TOP_CENTER
+    //         })
+    //     }
+    // }
+
     const submitHandler = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
@@ -34,10 +53,18 @@ function JobPost() {
         axios.post("http://localhost:8080/", data)
           .then((response) => {
             console.log(response);
+            toast.success("Job Has been Submitted Successfully!",
+            {
+                position: toast.POSITION.TOP_CENTER
+            })
           })
           .catch((error) => {
             console.log(error);
-          });
+            toast.error("Something Went Wrong",
+            {
+                position: toast.POSITION.TOP_CENTER
+            })
+        });
       };
 
     return ( <>
@@ -327,7 +354,16 @@ function JobPost() {
                 </div>
            
                 </div>
-    
+    <ToastContainer
+    autoClose={5000}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+
+    />
             </div>
             
             </motion.div>

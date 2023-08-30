@@ -34,7 +34,7 @@ body{
     padding: 15px;
 }
 .site-logo span {
-    color: #ff4a04;
+    color:#17b67c;
 }
 .site-nav-menu {
     float: right;
@@ -58,7 +58,7 @@ body{
 }
 .primary-menu a:hover,
 .primary-menu .active {
-    color:#ff4a04; 
+    color: #17b67c;; 
     /* padding-left: 2rem;   */
 }
 .primary-menu li a:after {
@@ -66,7 +66,7 @@ body{
     position: absolute;
     width: 0%;
     height: 2px;
-    background: #ff4a04;
+    background: #17b67c;
     bottom: 0px;
     left: 0;
     transition: all .5s;

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {motion} from "framer-motion"
 import axios from 'axios';
 import {Link} from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function CompleteProfile() {
     const [fname,setFName]=useState('');
     const [mname,setMName]=useState('');
@@ -43,9 +45,17 @@ function CompleteProfile() {
 		axios.post("http://localhost:8080/postResume",data)
 		.then((response) => {
 			console.log(response);
+			toast.success("Job Has been Submitted Successfully!",
+            {
+                position: toast.POSITION.TOP_CENTER
+            })
 		})
 		.catch((error) => {
 			console.log(error);
+			toast.error("Something Went Wrong",
+            {
+                position: toast.POSITION.TOP_CENTER
+            })
 		});
 		}
     
@@ -448,6 +458,16 @@ function CompleteProfile() {
 		
 				</div>
     
+			<ToastContainer
+    autoClose={5000}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+
+    />
             </div>
             
             </motion.div>
