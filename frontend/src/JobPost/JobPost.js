@@ -25,7 +25,7 @@ function JobPost() {
     const submitHandler = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
-        const userid = formData.get('userid');
+        // const userid = formData.get('userid');
         const applicationDeadline = formData.get('Application Deadline');
         const title = formData.get('Job Title');
         const description = formData.get('Job Description');
@@ -47,10 +47,11 @@ function JobPost() {
         const latitude = formData.get('Latitude');
         const longitude = formData.get('Longitude');
         
-        const data = { userid,title,description ,emailAddress,username,specialisms,industry,jobType,careerLevel,specialisms1,experience,qualification,gender,applicationDeadline,country,city,fullAddress,zipCode,latitude,longitude ,salary};
+        const data = { title,description ,emailAddress,username,specialisms,industry,jobType,careerLevel,specialisms1,experience,qualification,gender,applicationDeadline,country,city,fullAddress,zipCode,latitude,longitude ,salary};
+        data.userId = JSON.parse(localStorage.getItem('user')).phoneNo;
         console.log(data);
       
-        axios.post("http://localhost:8080/", data)
+        axios.post("http://localhost:8080/postJob", data)
           .then((response) => {
             console.log(response);
             toast.success("Job Has been Submitted Successfully!",
@@ -107,8 +108,7 @@ function JobPost() {
 								<li><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
 								
 								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
-								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
-							</ul>
+								<li><Link to="/logout"><i className="lni lni-power-switch me-2"></i>Log Out</Link></li></ul>
                     </div>					
                 </div>
             </div>

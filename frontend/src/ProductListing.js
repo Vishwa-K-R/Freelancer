@@ -9,7 +9,7 @@ const ProductPage = () => {
   const dispatch = useDispatch();
   const fetchProducts = async () => {
     const response = await axios
-      .get("http://localhost:8080/get")
+      .get("http://localhost:8080/getJob")
       .catch((err) => {
         console.log("Err: ", err);
       });

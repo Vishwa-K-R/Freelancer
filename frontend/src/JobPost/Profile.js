@@ -64,8 +64,7 @@ function Profile() {
 								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
 							
 								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
-								<li><a href=""><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
-							</ul>
+								<li><Link to="/logout"><i className="lni lni-power-switch me-2"></i>Log Out</Link></li></ul>
 						</div>					
 					</div>
 				</div>

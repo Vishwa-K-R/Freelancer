@@ -27,7 +27,7 @@ function Nav() {
     const [userDetails,setUserDetails] = useState({phoneNo : "" , password : ""});
     const [openOtp, setOpenOtp] = React.useState(false);
     const [error,setError] = useState("");
-
+	const [user,setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
 	async function handleCloseOtp () {
     if(userDetails.password === "" || userDetails.password.length !== 6){
@@ -39,6 +39,8 @@ function Nav() {
         const res = await axios.post("http://localhost:8080/api/v1/auth/authenticate",data).then(res => console.log(res))
         console.log(userDetails);
           setOpenOtp(false);
+		localStorage.setItem("user",JSON.stringify(data))
+		setUser(data)
       }catch(e){
         console.log(e);
         setError(e.message);
@@ -83,6 +85,10 @@ function Nav() {
         {setLoading(false)
             
         },1000)
+	const items = JSON.parse(localStorage.getItem('user'));
+  if (items) {
+   setUser(items);
+  }
     },[]);
     return ( <>
 
@@ -163,11 +169,11 @@ function Nav() {
             <li><a href="#">Contact</a></li>
 			
 			<ul class="nav-menu nav-menu-social align-to-right" style={{paddingLeft:70}}>
-					<li>
+					{!user && <li>
 						<a style={{cursor:"pointer"}}  onClick={handleClickOpen} class="ft-medium">
 							<i class="lni lni-user me-2"></i>Sign In
 						</a>
-					</li>
+					</li>}
 					<li class="add-listing">
 
 						<Link to="/Jobpost" class="theme-bg" ><i class="lni lni-circle-plus me-1"></i> Post a Job</Link>
