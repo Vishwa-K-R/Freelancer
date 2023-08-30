@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import {motion} from "framer-motion"
 import axios from 'axios';
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function CompleteProfile() {
+	const navigate = useNavigate();
     const [fname,setFName]=useState('');
     const [mname,setMName]=useState('');
     const [lname,setLName]=useState('');
@@ -38,6 +39,10 @@ function CompleteProfile() {
 	const data = {fname,mname,lname,job_title ,ph_no,salary,age,experience,language,about,country,state,fulladdress,latitude,longitude,highskl,intermedium,graduation,university,degree,tpoc,graduatedyear,pcoa,co,summarysac,eil1y,eil2y,eil3y,syh };
 	console.log(data);	
 	
+	const handleClick = () => {
+		navigate("/logout");
+	}
+
 	function onAxios(e)
 	{
 		e.preventDefault();
@@ -150,7 +155,7 @@ function CompleteProfile() {
 								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
 								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
 								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
-								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
+								<li><Link to="/" onClick={handleClick}><i className="lni lni-power-switch me-2"></i>Log Out</Link></li>
 							</ul>
 						</div>					
 					</div>
@@ -172,7 +177,7 @@ function CompleteProfile() {
 								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
 								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
 								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
-								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
+								<li><Link to="/" onClick={handleClick}><i className="lni lni-power-switch me-2"></i>Log Out</Link></li>
 							</ul>
 		
 			

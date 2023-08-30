@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {motion} from "framer-motion"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,6 +21,10 @@ function JobPost() {
     //         })
     //     }
     // }
+    const navigate = useNavigate();
+    const handleClick = () => {
+		navigate("/logout");
+	}
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -111,7 +115,7 @@ function JobPost() {
 								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
 								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
 								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
-								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
+								<li><Link to="/" onClick={handleClick}><i className="lni lni-power-switch me-2"></i>Log Out</Link></li>
 							</ul>
 						</div>					
 					</div>
@@ -133,7 +137,7 @@ function JobPost() {
 								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
 								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
 								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
-								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
+								<li><Link to="/" onClick={handleClick}><i className="lni lni-power-switch me-2"></i>Log Out</Link></li>
 							</ul>
 		
 			

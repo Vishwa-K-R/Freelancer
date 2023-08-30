@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import transition from "../Anim/Transition";
 import {motion} from "framer-motion"
 import axios from 'axios';
@@ -22,10 +22,12 @@ function Profile() {
 	const [fulladdress,setFulladdress]=useState('');
 	const [latitude,setLatitude]=useState('');
 	const [longitude ,setLongitude ]=useState('');
-	
+	const navigate = useNavigate();
 	const data = {name,job_title ,ph_no,salary,age,experience,language,about,facebook,twitter,linkedln,googleplus,country,state,fulladdress,latitude,longitude };
 	console.log(data);	
-	
+	const handleClick = () => {
+		navigate("/logout");
+	}
 	function onAxios(e)
 	{
 		e.preventDefault();
@@ -124,7 +126,7 @@ function Profile() {
 								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
 								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
 								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
-								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
+								<li><Link to="/" onClick={handleClick}><i className="lni lni-power-switch me-2"></i>Log Out</Link></li>
 							</ul>
 						</div>					
 					</div>
@@ -146,7 +148,7 @@ function Profile() {
 								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
 								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
 								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
-								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
+								<li><Link to="/" onClick={handleClick}><i className="lni lni-power-switch me-2"></i>Log Out</Link></li>
 							</ul>
 		
 			
