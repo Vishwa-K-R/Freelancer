@@ -1,7 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import {motion } from "framer-motion"
 import {Link} from  "react-router-dom"
+// import '../JobPost/dash.css'
 function Dashboard() {
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+	useEffect(() => {
+		window.addEventListener('resize', handleResize);
+	
+		return () => {
+		  window.removeEventListener('resize', handleResize);
+		};
+	  }, []);
+	const [mobileMenuActive, setMobileMenuActive] = useState(false);
+
+	const toggleMobileMenu = () => {
+	  setMobileMenuActive(!mobileMenuActive);
+	};
     return ( <>
 	<motion.div className="ani"
 			initial={{opacity: 0}}
@@ -10,10 +28,8 @@ function Dashboard() {
 			>
     <div className="Anim-Contain">
     <div className="dashboard-wrap bg-light">
-			<a className="mobNavigation" data-bs-toggle="collapse" href="#MobNav" role="button" aria-expanded="false" aria-controls="MobNav">
-				<i className="fas fa-bars me-2"></i>Dashboard Navigation
-			</a>
-            <div className="collapse" id="MobNav">
+	
+	{windowWidth > 773 ? <div className="collapse" id="MobNav">
 					<div className="dashboard-nav">
 						<div className="dashboard-inner">
 							<ul data-submenu-title="Main Navigation">
@@ -27,11 +43,36 @@ function Dashboard() {
 								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
 								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
 								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
-								<li><Link to="/logout"><i className="lni lni-power-switch me-2"></i>Log Out</Link></li>
+								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
 							</ul>
 						</div>					
 					</div>
-				</div>
+				</div> : <><div className="mobile-nav" onClick={toggleMobileMenu}>
+          <i className="fas fa-bars" style={{color:"black"}}></i>
+        </div>
+        <div className={`site-nav-menu ${mobileMenuActive ? 'mobile-menu' : ''} flex-center-full-hw`}>
+          <ul className="primary-menu" style={{paddingLeft:10}}>
+		  <li className="active"><Link to="/Dash"><i class="lni lni-dashboard mr-2"></i>Dashboard</Link></li>
+		  <li ><Link to="/JobPost"><i class="lni lni-dashboard mr-2"></i>Post New Job</Link></li>
+		  <li className="inactive"><Link to="/AppliedJobs"><i className="lni lni-dashboard mr-2"></i>AppliedJobs</Link></li>
+			<li>
+			<li className="inactive"><Link to="/JobAccept"><i className="lni lni-dashboard mr-2"></i>Manage Jobs</Link></li>
+			<li ><Link to="/CompResume"><i className="lni lni-dashboard mr-2"></i>Complete Your Resume</Link></li>
+			</li>
+			<br>
+			</br>
+			<ul data-submenu-title="My Accounts">
+								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
+								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
+								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
+								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
+							</ul>
+		
+			
+          </ul>
+		  
+        </div></>}
+            
 				
 				<div className="dashboard-content">
 					<div className="dashboard-tlbar d-block mb-5">
