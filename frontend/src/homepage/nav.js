@@ -16,6 +16,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import axios from "axios";
 
 import "./Dum.css"
 import OtpVerification from "../Login/OtpVerification";
@@ -23,14 +24,51 @@ import OtpVerification from "../Login/OtpVerification";
 
 function Nav() {
 	const [open, setOpen] = React.useState(false);
+    const [userDetails,setUserDetails] = useState({phoneNo : "" , password : ""});
+    const [openOtp, setOpenOtp] = React.useState(false);
+    const [error,setError] = useState("");
 
-	const handleClickOpen = () => {
-	  setOpen(true);
-	};
+
+	async function handleCloseOtp () {
+    if(userDetails.password === "" || userDetails.password.length !== 6){
+      setError("Please enter valid OTP");
+    }else{
+      const data = {phoneNo : userDetails.phoneNo,password : userDetails.password}
+      try{
+        console.log(data);
+        const res = await axios.post("http://localhost:8080/api/v1/auth/authenticate",data).then(res => console.log(res))
+        console.log(userDetails);
+          setOpenOtp(false);
+      }catch(e){
+        console.log(e);
+        setError(e.message);
+      }
+    }
+        
+    };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  async function handleClose() {
+    if(userDetails.phoneNo === "" || userDetails.phoneNo.length !== 11){
+        setError("Please enter valid mobile number");
+    }else{
+    const data = {phoneNo : userDetails.phoneNo}
+    try{
+        console.log(data);
+      const res = await axios.post("http://localhost:8080/api/v1/auth/register",data).then(res => console.log(res))
+      setOpenOtp(true);
+      setOpen(false);
+    }catch(e){
+      console.log(e);
+      setError(e.message);
+    }
+    }
+  };
   
-	const handleClose = () => {
-	  setOpen(false);
-	};
+
   
 
 	const [mobileMenuActive, setMobileMenuActive] = useState(false);
@@ -207,6 +245,71 @@ function Nav() {
 
         )
     }
+    </div>
+	 <div>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
+        Open form dialog
+      </Button> */}
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle><h4>Login with your Phone Number</h4></DialogTitle>
+        <DialogContent>
+            <form>
+            <div class="cent" style={{marginTop: "50"}}>
+                <div class="mb-3">
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Phone Number"
+            type="text"
+            value = {userDetails.phoneNo}
+            onChange={(e)=>{
+                setUserDetails({...userDetails , phoneNo : e.target.value })
+            }}
+            fullWidth
+            variant="standard"
+            Required
+          />
+          </div>
+          <p id="error" style={{"color" : "red"}}>{error}</p>
+          </div>
+            </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Get OTP</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+    <div>
+    <Dialog open={openOtp} onClose={handleCloseOtp}>
+        <DialogTitle><h4>Enter your OTP</h4></DialogTitle>
+        <DialogContent>
+            <form>
+            <div class="cent" style={{marginTop: "50"}}>
+                <div class="mb-3">
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="OTP"
+            type="string"
+            value={userDetails.password}
+            fullWidth
+            onChange={(e)=>{
+                setUserDetails({...userDetails , password : e.target.value })
+            }}
+            variant="standard"
+            required
+          />
+          </div>
+          <p id="error"></p>
+          </div>
+            </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseOtp}>Submit</Button>
+        </DialogActions>
+      </Dialog>
     </div>
     </> );
 }
