@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../Css/CombinedCss.css"
 import Footer from "./Footer";
 import HomeBanner from "./HomeBanner";
@@ -18,16 +18,28 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from "axios";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import "./Dum.css"
 import OtpVerification from "../Login/OtpVerification";
 
 
 function Nav() {
+  const navigate = useNavigate();
 	const [open, setOpen] = React.useState(false);
-    const [userDetails,setUserDetails] = useState({phoneNo : "" , password : ""});
-    const [openOtp, setOpenOtp] = React.useState(false);
-    const [error,setError] = useState("");
+  const [userDetails,setUserDetails] = useState({phoneNo : "" , password : ""});
+  const [openOtp, setOpenOtp] = React.useState(false);
+  const [error,setError] = useState("");
 	const [user,setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  
+  const handleClick = () => {
+    if(!user){
+      toast.error("Please Sign In");
+    }else{
+      navigate("/JobPost")
+    }
+  }
 
 	async function handleCloseOtp () {
     if(userDetails.password === "" || userDetails.password.length !== 6){
@@ -93,6 +105,7 @@ function Nav() {
     return ( <>
 
     <div className='Loaders'>
+      <ToastContainer/>
         {
         loading ?(
             
@@ -176,7 +189,7 @@ function Nav() {
 					</li>}
 					<li class="add-listing">
 
-						<Link to="/Jobpost" class="theme-bg" ><i class="lni lni-circle-plus me-1"></i> Post a Job</Link>
+						<Link to="" onClick={handleClick} class="theme-bg" ><i class="lni lni-circle-plus me-1"></i> Post a Job</Link>
 					</li>
 				</ul>
 			
