@@ -21,6 +21,7 @@ const intialState = {
         return state;
     }
   };
+  console.log("datas",selectedProduct);
 
 
   // const intialProfile=

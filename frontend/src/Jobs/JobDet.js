@@ -20,29 +20,29 @@ const JobDet =() =>
     const dispatch = useDispatch();
     const [productData, setProductData] = useState(null);
 
-
+	console.log("pro",productData);
     useEffect(()=>
     {
         const fetchProductDetail= async () =>
         {
             try
             {
-                const response=await axios.get(`http://localhost:8080/get/${productId}`);
+                const response=await axios.get(`http://localhost:8080/jobpost/${productId}`);
                 dispatch(selectedProducts(response.data));
                 setProductData(response.data);
             }
             catch(error)
             {
-                console.log("error: ",error.meassage)
+				console.log("error: ",error.meassage)
             }
         };
         if(productId && productId!==" ") fetchProductDetail();
     },[productId])
 
-    const { url, title, prize, category, description,rating } = productData || {};
+    const { qualification, title, prize, category, description,rating ,country,applicationDeadline,industry,jobType,specialisms,careerLevel,city} = productData || {};
     return (
         <>
-        {/* Search Bar */}
+        
         <div class="bg-cover py-5" style={{background:"#17b67c",  background: `url(${require("../img/bn-2.jpg")}) no-repeat` ,backgroundRepeat: "no-repeat"}}>
 				<div class="ht-200" ></div>
 			</div>
@@ -65,12 +65,12 @@ const JobDet =() =>
 								
 									<div class="jbd-01-caption mb-4">
 										<div class="tbd-title">
-											<div class="ft-medium medium"><span>InfosysX</span></div>
-											<h4 class="mb-3 ft-medium fs-lg">Senior UI/UX Web Designer in combineReducers<img src="assets/img/verify.svg" class="ms-1" width="12" alt=""/></h4>
+											<div class="ft-medium medium"><span>{industry}</span></div>
+											<h4 class="mb-3 ft-medium fs-lg">{title}<img src="assets/img/verify.svg" class="ms-1" width="12" alt=""/></h4>
 										</div>
 										<div class="jbd-list">
 											<span class="px-2 py-1 rounded theme-cl theme-bg-light me-2"><i class="lni lni-briefcase me-1"></i>Full Time</span>
-											<span><i class="lni lni-map-marker me-1"></i>Coimbatore, USA</span>
+											<span><i class="lni lni-map-marker me-1"></i>{country}</span>
 											<span class="px-2 py-1 rounded text-warning bg-light-warning ms-2"><i class="lni lni-star me-1"></i>Featured</span>
 											<span class="rounded ms-2"><i class="lni lni-money-protection me-1"></i>$85k - 100k PA.</span>
 										</div>
@@ -78,8 +78,13 @@ const JobDet =() =>
 									
 									<div class="jbd-details mb-4">
 										<h5 class="ft-medium fs-md">Job description</h5>
-										<p>We are looking for a PHP Developer responsible for managing back-end services and the interchange of data between the server and the users. Your primary focus will be the development of all server-side logic, definition and maintenance of the central database</p>
-										<p>Across our network, we strive to provide rapid, performance-based, industry-focused and technology-enabled services, which reflect a shared knowledge of global and local industries and our experience of the Indian business environment.</p>
+										{/* <p>We are looking for a PHP Developer responsible for managing back-end services and the interchange of data between the server and the users. Your primary focus will be the development of all server-side logic, definition and maintenance of the central database</p> */}
+										<p>{description}</p>
+									</div>
+									<div class="jbd-details mb-4">
+										<h5 class="ft-medium fs-md">Application Deadline</h5>
+										{/* <p>We are looking for a PHP Developer responsible for managing back-end services and the interchange of data between the server and the users. Your primary focus will be the development of all server-side logic, definition and maintenance of the central database</p> */}
+										<p>{applicationDeadline}</p>
 									</div>
 									
 									<div class="jbd-details mb-4">
@@ -150,10 +155,11 @@ const JobDet =() =>
 										<h5 class="ft-medium fs-md">Skills Required</h5>
 										<div class="other-details">
 											<div class="details ft-medium"><label class="text-muted">Role</label><span class="text-dark">Database Architect / Designer</span></div>
-											<div class="details ft-medium"><label class="text-muted">Industry Type</label><span class="text-dark">Advertising & Marketing</span></div>
+											<div class="details ft-medium"><label class="text-muted">Qualificatione</label><span class="text-dark">{qualification}</span></div>
 											<div class="details ft-medium"><label class="text-muted">Functional Area</label><span class="text-dark">Engineering - Software</span></div>
-											<div class="details ft-medium"><label class="text-muted">Employment Type</label><span class="text-dark">Full Time, Permanent</span></div>
-											<div class="details ft-medium"><label class="text-muted">Role Category</label><span class="text-dark">DBA / Data warehousing</span></div>
+											<div class="details ft-medium"><label class="text-muted">Employment Type</label><span class="text-dark">{jobType}</span></div>
+											<div class="details ft-medium"><label class="text-muted">Role Category</label><span class="text-dark">{specialisms}</span></div>
+											<div class="details ft-medium"><label class="text-muted">Career Level</label><span class="text-dark">{careerLevel}</span></div>
 										</div>
 									</div>
 									
@@ -196,7 +202,7 @@ const JobDet =() =>
 								<div class="drt-block-caption">
 									<div class="drt-soc-caption text-center mb-3">
 										<h4 class="ft-medium mb-0 fs-md">Sundara Infotech</h4>
-										<span><i class="lni lni-map-marker me-1"></i>Kuniyamathur, Coimbatore</span>
+										<span><i class="lni lni-map-marker me-1"></i>{city}</span>
 									</div>
 									<div class="drt-soc-block text-center mb-4">
 										<ul class="jbd-social">

@@ -213,11 +213,7 @@ function Nav() {
 								<select className="form-select lg b-0">
 								  <option value="1">Choose Location</option>
 								  <option value="2">Los Angeles</option>
-								  <option value="3">San Francisco</option>
-								  <option value="4">San Diego</option>
-								  <option value="5">Philadelphia</option>
-								  <option value="6">Denver</option>
-								  <option value="7">Houston</option>
+								 
 								</select>
 							</div>
 						</div>

@@ -4,25 +4,33 @@ import {Link} from "react-router-dom"
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 
 function JobPost() {
-    // const notify = () => 
-    // {
-    //     try{
-    //         toast.success("Job Has been Submitted Successfully!",
-    //         {
-    //             position: toast.POSITION.TOP_CENTER
-    //         })
-    //     }
-    //     catch(err){
-    //         toast.error("Something Went Wrong",
-    //         {
-    //             position: toast.POSITION.TOP_CENTER
-    //         })
-    //     }
-    // }
+    const notify = () => 
+    {
+        try{
+            toast.success("Job Has been Submitted Successfully!",
+            {
+                position: toast.POSITION.TOP_CENTER
+            })
+        }
+        catch(err){
+            toast.error("Something Went Wrong",
+            {
+                position: toast.POSITION.TOP_CENTER
+            })
+        }
+    }
+    const [mobileMenuActive, setMobileMenuActive] = useState(false);
+
+	const toggleMobileMenu = () => {
+	  setMobileMenuActive(!mobileMenuActive);
+	};
 
     const submitHandler = (event) => {
+        
+        
         event.preventDefault();
         const formData = new FormData(event.target);
         const userid = formData.get('userid');
@@ -42,15 +50,17 @@ function JobPost() {
         const country = formData.get('Country');
         const city = formData.get('City');
         const fullAddress = formData.get('Full Address');
-        const salary = formData.get('Expected Salary');
+        const salary = formData.get('Excepted Salary');
         const zipCode = formData.get('Zip Code');
         const latitude = formData.get('Latitude');
         const longitude = formData.get('Longitude');
+      
         
-        const data = { userid,title,description ,emailAddress,username,specialisms,industry,jobType,careerLevel,specialisms1,experience,qualification,gender,applicationDeadline,country,city,fullAddress,zipCode,latitude,longitude ,salary};
+        const data = { userid,title,description ,emailAddress,username,specialisms,industry,jobType,careerLevel,specialisms1,experience,qualification,gender,applicationDeadline,country,city,fullAddress,zipCode,latitude,longitude,salary};
         console.log(data);
       
-        axios.post("http://localhost:8080/", data)
+        
+        axios.post("http://localhost:8080/postJob", data)
           .then((response) => {
             console.log(response);
             toast.success("Job Has been Submitted Successfully!",
@@ -66,6 +76,8 @@ function JobPost() {
             })
         });
       };
+      
+	
 
     return ( <>
 
@@ -76,23 +88,11 @@ function JobPost() {
 			exit={{opacity:0}}
 			>
         <div className="clearfix"></div>
-        
     
         <div className="dashboard-wrap bg-light">
-
-            <a className="mobNavigation" data-toggle="collapse" href="#MobNav" role="button" aria-expanded="false" aria-controls="MobNav">
-                <i className="fas fa-bars mr-2"></i>Dashboard 
-                
-                    <ul data-submenu-title="Main Navigation">
-							<li ><Link to="/Dash"><i className="lni lni-dashboard mr-2"></i>Dashboard</Link></li>
-                            <li className="active"><Link to="/JobPost"><i className="lni lni-dashboard mr-2"></i>Post New Job</Link></li>
-                            <li ><Link to="/AppliedJobs"><i className="lni lni-dashboard mr-2"></i>Applied Jobs</Link></li>
-                            <li ><Link to="/JobAccept"><i className="lni lni-dashboard mr-2"></i>Manage Jobs</Link></li>
-                            <li ><Link to="/CompResume"><i className="lni lni-dashboard mr-2"></i>Complete Your Resume</Link></li>
-								</ul>
-            </a>
-  
              <div className="collapse" id="MobNav">
+        
+     
                 <div className="dashboard-nav">
                     <div className="dashboard-inner">
                     <ul data-submenu-title="Main Navigation">
@@ -290,7 +290,7 @@ function JobPost() {
                                                 <div className="col-xl-4 col-lg-6 col-md-6">
                                                     <div className="form-group">
                                                         <label className="text-dark ft-medium">Excepted Salary</label>
-                                                        <input  name='Expected Salary' type="text" className="form-control" placeholder="0"/>
+                                                        <input name='Expected Salary' type="text" className="form-control" placeholder="0"/>
                                                     </div>
                                                 </div>
 
@@ -371,3 +371,16 @@ function JobPost() {
 }
 
 export default JobPost;
+
+
+
+
+
+
+
+
+
+
+
+
+

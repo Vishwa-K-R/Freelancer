@@ -1,5 +1,18 @@
 import { Link } from "react-router-dom";
 import Footer from "../homepage/Footer";
+import img1 from "../img/c-1.png"
+import img2 from "../img/c-2.png"
+import img3 from "../img/c-3.png"
+import img4 from "../img/c-4.png"
+import img5 from "../img/c-5.jpg"
+import img6 from "../img/c-6.png"
+import img7 from "../img/c-7.png"
+import img8 from "../img/c-8.png"
+import img9 from "../img/c-17.png"
+import img10 from "../img/c-18.png"
+import img11 from "../img/c-19.jpg"
+import img12 from "../img/c-20.png"
+
 
 function JobCat() {
     return ( <>
@@ -42,11 +55,11 @@ function JobCat() {
 							</div>
 						</div>
 						<div className="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
-							<div className="row g-4">
+							<div className="row g-4" style={{rowGap:"20px"}}>
 							
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/1.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img1} className="img-fluid" width="45" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">Content Writer</h4>
 										<p className="mb-3 p-0 lh-1">632 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -55,7 +68,7 @@ function JobCat() {
 								
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/2.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img2} className="img-fluid" width="45" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">Web Designing</h4>
 										<p className="mb-3 p-0 lh-1">412 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -64,7 +77,7 @@ function JobCat() {
 								
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/3.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img3} className="img-fluid" width="45" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">WordPress Developer</h4>
 										<p className="mb-3 p-0 lh-1">620 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -73,7 +86,7 @@ function JobCat() {
 								
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/4.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img4} className="img-fluid" width="45" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">PHP Developer</h4>
 										<p className="mb-3 p-0 lh-1">470 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -82,7 +95,7 @@ function JobCat() {
 								
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/5.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img6} className="img-fluid" width="45" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">UI/UX Designer</h4>
 										<p className="mb-3 p-0 lh-1">513 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -90,7 +103,7 @@ function JobCat() {
 								</div>
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/5.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img7} className="img-fluid" width="45" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">Full Stack Developer</h4>
 										<p className="mb-3 p-0 lh-1">513 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -98,7 +111,7 @@ function JobCat() {
 								</div>
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/5.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img8} className="img-fluid" width="45" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">Full Stack Developer</h4>
 										<p className="mb-3 p-0 lh-1">513 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -250,11 +263,11 @@ function JobCat() {
 							</div>
 						</div>
 						<div className="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
-							<div className="row g-4">
+							<div className="row g-4"  style={{rowGap:"20px"}}>
 							
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/6.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img5} className="img-fluid" width="115" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">Car Wash</h4>
 										<p className="mb-3 p-0 lh-1">39 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -263,7 +276,7 @@ function JobCat() {
 								
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/7.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img10} className="img-fluid" width="115" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">Water Supply</h4>
 										<p className="mb-3 p-0 lh-1">40 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -272,7 +285,7 @@ function JobCat() {
 								
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/8.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img11} className="img-fluid" width="115" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">Plumbering</h4>
 										<p className="mb-3 p-0 lh-1">18 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -281,7 +294,7 @@ function JobCat() {
 								
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/9.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img9} className="img-fluid" width="55" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">Electrician</h4>
 										<p className="mb-3 p-0 lh-1">84 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>
@@ -290,7 +303,7 @@ function JobCat() {
 								
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 									<div className="d-block full-width px-4 py-4 bg-white rounded">
-										<div className="d-block full-width mb-1"><img src="assets/img/icons/10.png" className="img-fluid" width="45" alt="" /></div>
+										<div className="d-block full-width mb-1"><img src={img12} className="img-fluid" width="65" alt="" /></div>
 										<h4 className="ft-medium mb-0 fs-md">Driver</h4>
 										<p className="mb-3 p-0 lh-1">62 Jobs</p>
 										<a href="job-search-v1.html" className="theme-cl ft-medium">Explore Jobs<i className="lni lni-arrow-right-circle ms-1"></i></a>

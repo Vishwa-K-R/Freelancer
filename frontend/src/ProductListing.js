@@ -3,17 +3,21 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import ProductComponent from "./ProductComponent";
 import { setProducts } from "./Redux/Actions/ProductActions";
+import { selectedProduct } from "./Redux/Reducers/ProductReducer";
+import { Link } from "react-router-dom";
+import Footer from "./homepage/Footer";
 
 const ProductPage = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
   const fetchProducts = async () => {
     const response = await axios
-      .get("http://localhost:8080/get")
+      .get("http://localhost:8080/getJob")
       .catch((err) => {
         console.log("Err: ", err);
       });
     dispatch(setProducts(response.data));
+	
   };
 
   useEffect(() => {
@@ -22,7 +26,25 @@ const ProductPage = () => {
 
   console.log("Products :", products);
   return (
-    
+    <>
+	<div className="bg-title py-5" data-overlay="0">
+				<div className="ht-30"></div>
+				<div className="container">
+					
+					<div className="row">
+						<div className="colxl-12 col-lg-12 col-md-12">
+							<h1 className="ft-medium">Browse More Jobs</h1>
+							<nav aria-label="breadcrumb">
+								<ol className="breadcrumb">
+									<li className="breadcrumb-item"><Link to="/" className="text-light">Home</Link></li>
+									<li className="breadcrumb-item active theme-cl" aria-current="page">Browse More Jobs</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+				<div className="ht-30"></div>
+			</div>
     <section class="bg-light middle">
 				<div class="container">
 					<div class="row">
@@ -52,6 +74,8 @@ const ProductPage = () => {
       <ProductComponent />
       </div>
 			</section>
+			<Footer/>
+	</>
   );
 };
 
