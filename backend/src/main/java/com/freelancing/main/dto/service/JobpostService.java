@@ -2,8 +2,9 @@ package com.freelancing.main.dto.service;
 
 
 	import java.util.List;
+import java.util.Optional;
 
-	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Service;
 
 import com.freelancing.main.dto.entity.Jobpost;
@@ -33,4 +34,7 @@ import com.freelancing.main.dto.respository.Jobpostrepo;
 		repository.save(Jobpost);
 		return "saved";
 	}
+	public Optional<Jobpost> findJobById(int id) {
+        return repository.findById(id);
+    }
 }

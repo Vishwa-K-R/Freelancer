@@ -43,7 +43,7 @@ public class AuthenticationService {
         	existingUser.get().setPassword(passwordEncoder.encode(otp));
         	user = existingUser.get();
         }
-        Twilio.init("AC9c8d0c847755c6ec303b6a903c17c833","37e08177c6e48659da11322af786a5d0");
+        Twilio.init("AC9c8d0c847755c6ec303b6a903c17c833","37788b2f51f4987a1157359569684fa1");
 
         Message.creator(new PhoneNumber("+91 " + request.getPhoneNo()),
                         new PhoneNumber("+18147184729"), "Your SavvySkills Verifivation Code is " + otp ).create();
