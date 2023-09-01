@@ -17,6 +17,7 @@ import ProductPage from "./ProductListing";
 import CompleteProfile from "./JobPost/CompleteResume";
 import CandDet from "./Jobs/CandDet";
 import OtpVerification from "./Login/OtpVerification";
+import Logout from "./homepage/Logout";
 
 function App() {
     const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
 <Route path="/" element={<Nav/>}/>
   <Route path='SignUp' element={<SignUp/>}/>
   <Route path='Login' element={<Login/>}/>
+  <Route path="/logout" element={<Logout/>}/>
   <Route path='SignUpBack' element={<SignUp/>}/>
   <Route path='JobPost' element={<JobPost/>}/>
   <Route path='profile' element={<Profile/>}/>

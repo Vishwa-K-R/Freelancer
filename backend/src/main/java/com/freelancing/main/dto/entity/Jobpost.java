@@ -11,6 +11,7 @@ public class Jobpost{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String userId;
 	private String title;
 	private String description;
 	private String emailAddress;
@@ -154,12 +155,24 @@ public class Jobpost{
 	public void setLongitude(String longitude) {
 		Longitude = longitude;
 	}
-	public Jobpost(int id, String title, String description, String emailAddress, String username, String specialisms,
-			String industry, String jobType, String careerLevel, String specialisms1, String experience,
-			String qualification, String gender, String applicationDeadline, String country, String city,
-			String fullAddress, String zipCode, String latitude, String longitude) {
+	
+	@Override
+	public String toString() {
+		return "Jobpost [id=" + id + ", userId=" + userId + ", title=" + title + ", description=" + description
+				+ ", emailAddress=" + emailAddress + ", username=" + username + ", Specialisms=" + Specialisms
+				+ ", Industry=" + Industry + ", JobType=" + JobType + ", CareerLevel=" + CareerLevel + ", Specialisms1="
+				+ Specialisms1 + ", Experience=" + Experience + ", Qualification=" + Qualification + ", Gender="
+				+ Gender + ", ApplicationDeadline=" + ApplicationDeadline + ", Country=" + Country + ", City=" + City
+				+ ", FullAddress=" + FullAddress + ", ZipCode=" + ZipCode + ", Latitude=" + Latitude + ", Longitude="
+				+ Longitude + "]";
+	}
+	public Jobpost(int id, String userId, String title, String description, String emailAddress, String username,
+			String specialisms, String industry, String jobType, String careerLevel, String specialisms1,
+			String experience, String qualification, String gender, String applicationDeadline, String country,
+			String city, String fullAddress, String zipCode, String latitude, String longitude) {
 		super();
 		this.id = id;
+		this.userId = userId;
 		this.title = title;
 		this.description = description;
 		this.emailAddress = emailAddress;
@@ -180,15 +193,11 @@ public class Jobpost{
 		Latitude = latitude;
 		Longitude = longitude;
 	}
-	@Override
-	public String toString() {
-		return "Jobpost [id=" + id + ", title=" + title + ", description=" + description + ", emailAddress="
-				+ emailAddress + ", username=" + username + ", Specialisms=" + Specialisms + ", Industry=" + Industry
-				+ ", JobType=" + JobType + ", CareerLevel=" + CareerLevel + ", Specialisms1=" + Specialisms1
-				+ ", Experience=" + Experience + ", Qualification=" + Qualification + ", Gender=" + Gender
-				+ ", ApplicationDeadline=" + ApplicationDeadline + ", Country=" + Country + ", City=" + City
-				+ ", FullAddress=" + FullAddress + ", ZipCode=" + ZipCode + ", Latitude=" + Latitude + ", Longitude="
-				+ Longitude + "]";
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 }

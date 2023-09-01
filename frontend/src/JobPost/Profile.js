@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import transition from "../Anim/Transition";
 import {motion} from "framer-motion"
 import axios from 'axios';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function Profile() {
 
 	const [name,setName]=useState('');
@@ -22,10 +22,12 @@ function Profile() {
 	const [fulladdress,setFulladdress]=useState('');
 	const [latitude,setLatitude]=useState('');
 	const [longitude ,setLongitude ]=useState('');
-	
+	const navigate = useNavigate();
 	const data = {name,job_title ,ph_no,salary,age,experience,language,about,facebook,twitter,linkedln,googleplus,country,state,fulladdress,latitude,longitude };
 	console.log(data);	
-	
+	const handleClick = () => {
+		navigate("/logout");
+	}
 	function onAxios(e)
 	{
 		e.preventDefault();
@@ -38,7 +40,23 @@ function Profile() {
 			console.log(error);
 		});
 		}
+		const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+	useEffect(() => {
+		window.addEventListener('resize', handleResize);
+	
+		return () => {
+		  window.removeEventListener('resize', handleResize);
+		};
+	  }, []);
+	const [mobileMenuActive, setMobileMenuActive] = useState(false);
+
+	const toggleMobileMenu = () => {
+	  setMobileMenuActive(!mobileMenuActive);
+	};
 	
     return ( <>
 	<motion.div className="ani"
@@ -47,14 +65,97 @@ function Profile() {
 			exit={{opacity:0}}
 			>
     <div class="dashboard-wrap bg-light">
+	{windowWidth > 773 ? <div className="collapse" id="MobNav">
+					<div className="dashboard-nav">
+						<div className="dashboard-inner">
+							<ul data-submenu-title="Main Navigation">
+							<li className="active"><Link to="/Dash"><i class="lni lni-dashboard mr-2"></i>Dashboard</Link></li>
+                            <li ><Link to="/JobPost"><i class="lni lni-dashboard mr-2"></i>Post New Job</Link></li>
+							<li className="inactive"><Link to="/AppliedJobs"><i className="lni lni-dashboard mr-2"></i>AppliedJobs</Link></li>
+							<li className="inactive"><Link to="/JobAccept"><i className="lni lni-dashboard mr-2"></i>Manage Jobs</Link></li>
+							<li ><Link to="/CompResume"><i className="lni lni-dashboard mr-2"></i>Complete Your Resume</Link></li>
+								</ul>
+							<ul data-submenu-title="My Accounts">
+								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
+								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
+								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
+								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
+							</ul>
+						</div>					
+					</div>
+				</div> : <><div className="mobile-nav" onClick={toggleMobileMenu}>
+          <i className="fas fa-bars" style={{color:"black",paddingLeft:10}}></i>
+        </div>
+        <div className={`site-nav-menu ${mobileMenuActive ? 'mobile-menu' : ''} flex-center-full-hw`}>
+          <ul className="primary-menu" style={{paddingLeft:20}}>
+		  <li className="active"><Link to="/Dash"><i class="lni lni-dashboard mr-2"></i>Dashboard</Link></li>
+		  <li ><Link to="/JobPost"><i class="lni lni-dashboard mr-2"></i>Post New Job</Link></li>
+		  <li className="inactive"><Link to="/AppliedJobs"><i className="lni lni-dashboard mr-2"></i>AppliedJobs</Link></li>
+			<li>
+			<li className="inactive"><Link to="/JobAccept"><i className="lni lni-dashboard mr-2"></i>Manage Jobs</Link></li>
+			<li ><Link to="/CompResume"><i className="lni lni-dashboard mr-2"></i>Complete Your Resume</Link></li>
+			</li>
+			<br>
+			</br>
+			<ul data-submenu-title="My Accounts">
+								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
+								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
+								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
+								<li><a href="login.html"><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
+							</ul>
+		
+			
+          </ul>
+		  
+        </div></>}
 				
-				<a class="mobNavigation" data-bs-toggle="collapse" href="#MobNav" role="button" aria-expanded="false" aria-controls="MobNav">
-					<i class="fas fa-bars me-2"></i>Dashboard Navigation
-				</a>
 				 <div class="collapse" id="MobNav">
 					<div class="dashboard-nav">
 						<div class="dashboard-inner">
-						<ul data-submenu-title="Main Navigation">
+						{windowWidth > 773 ? <div className="collapse" id="MobNav">
+					<div className="dashboard-nav">
+						<div className="dashboard-inner">
+							<ul data-submenu-title="Main Navigation">
+							<li className="active"><Link to="/Dash"><i class="lni lni-dashboard mr-2"></i>Dashboard</Link></li>
+                            <li ><Link to="/JobPost"><i class="lni lni-dashboard mr-2"></i>Post New Job</Link></li>
+							<li className="inactive"><Link to="/AppliedJobs"><i className="lni lni-dashboard mr-2"></i>AppliedJobs</Link></li>
+							<li className="inactive"><Link to="/JobAccept"><i className="lni lni-dashboard mr-2"></i>Manage Jobs</Link></li>
+							<li ><Link to="/CompResume"><i className="lni lni-dashboard mr-2"></i>Complete Your Resume</Link></li>
+								</ul>
+							<ul data-submenu-title="My Accounts">
+								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
+								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
+								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
+								<li><Link to="/" onClick={handleClick}><i className="lni lni-power-switch me-2"></i>Log Out</Link></li>
+							</ul>
+						</div>					
+					</div>
+				</div> : <><div className="mobile-nav" onClick={toggleMobileMenu}>
+          <i className="fas fa-bars" style={{color:"black",paddingLeft:10}}></i>
+        </div>
+        <div className={`site-nav-menu ${mobileMenuActive ? 'mobile-menu' : ''} flex-center-full-hw`}>
+          <ul className="primary-menu" style={{paddingLeft:20}}>
+		  <li className="active"><Link to="/Dash"><i class="lni lni-dashboard mr-2"></i>Dashboard</Link></li>
+		  <li ><Link to="/JobPost"><i class="lni lni-dashboard mr-2"></i>Post New Job</Link></li>
+		  <li className="inactive"><Link to="/AppliedJobs"><i className="lni lni-dashboard mr-2"></i>AppliedJobs</Link></li>
+			<li>
+			<li className="inactive"><Link to="/JobAccept"><i className="lni lni-dashboard mr-2"></i>Manage Jobs</Link></li>
+			<li ><Link to="/CompResume"><i className="lni lni-dashboard mr-2"></i>Complete Your Resume</Link></li>
+			</li>
+			<br>
+			</br>
+			<ul data-submenu-title="My Accounts">
+								<li><Link to="/Profile"><i className="lni lni-user me-2"></i>My Profile </Link></li>
+								<li ><Link to="/ChangePass"><i className="lni lni-user me-2"></i>Change Password </Link></li>
+								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
+								<li><Link to="/" onClick={handleClick}><i className="lni lni-power-switch me-2"></i>Log Out</Link></li>
+							</ul>
+		
+			
+          </ul>
+		  
+        </div></>}
+						{/* <ul data-submenu-title="Main Navigation">
 							<li ><Link to="/Dash"><i class="lni lni-dashboard mr-2"></i>Dashboard</Link></li>
                             <li ><Link to="/JobPost"><i class="lni lni-dashboard mr-2"></i>Post New Job</Link></li>
                             <li ><Link to="/CompResume"><i class="lni lni-dashboard mr-2"></i>Post New Job</Link></li>
@@ -65,7 +166,7 @@ function Profile() {
 							
 								<li><a href=""><i className="lni lni-trash-can me-2"></i>Delete Account</a></li>
 								<li><a href=""><i className="lni lni-power-switch me-2"></i>Log Out</a></li>
-							</ul>
+							</ul> */}
 						</div>					
 					</div>
 				</div>
