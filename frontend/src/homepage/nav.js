@@ -189,7 +189,7 @@ function Nav() {
 					</li>}
 					<li class="add-listing">
 
-						<Link to="" onClick={handleClick} class="theme-bg" ><i class="lni lni-circle-plus me-1"></i> Post a Job</Link>
+						<button  className="btn btn-md theme-bg rounded text-light hover-theme" onClick={handleClick}  ><i class="lni lni-circle-plus me-1"></i> Post a Job</button>
 					</li>
 				</ul>
 			
